@@ -5,38 +5,49 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
+// Marks this class as a JPA entity, meaning it will be mapped to a database table
 @Entity
 public class User {
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
-  private Long id;
+    // Marks 'id' as the primary key of the entity
+    @Id
+    // Configures the primary key generation strategy as AUTO (database will handle ID generation)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
-  private String name;
+    // Represents the user's name column in the database
+    private String name;
 
-  private String email;
+    // Represents the user's email column in the database
+    private String email;
 
-  public User() {}
+    // Default constructor required by JPA
+    public User() {}
 
-  public User(Long id, String name, String email) {
-    this.id = id;
-    this.name = name;
-    this.email = email;
-  }
+    // Parameterized constructor to create a User object with all fields
+    public User(Long id, String name, String email) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+    }
 
-  public String getEmail() {
-    return email;
-  }
+    // Getter method to retrieve the user's email
+    public String getEmail() {
+        return email;
+    }
 
-  public void setEmail(String email) {
-    this.email = email;
-  }
+    // Setter method to update the user's email
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-  public String getName() {
-    return name;
-  }
+    // Getter method to retrieve the user's name
+    public String getName() {
+        return name;
+    }
 
-  public void setName(String name) {
-    this.name = name;
-  }
+    // Setter method to update the user's name
+    public void setName(String name) {
+        this.name = name;
+    }
 }
