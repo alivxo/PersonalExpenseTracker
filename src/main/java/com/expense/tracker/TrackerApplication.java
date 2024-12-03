@@ -1,6 +1,6 @@
 package com.expense.tracker;
 
-import com.expense.tracker.Entities.User;
+import com.expense.tracker.Models.User;
 import com.expense.tracker.Repositories.UserRepository;
 import org.apache.camel.language.bean.Bean;
 import org.springframework.boot.CommandLineRunner;
