@@ -1,28 +1,33 @@
-package com.expense.tracker.Service;
+package com.expense.tracker.Service; // Declares the package this file belongs to
 
-import com.expense.tracker.Models.User; // Corrected package name for User
-import com.expense.tracker.Repositories.UserRepository; // Corrected package name for UserRepository
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Service;
+import com.expense.tracker.Models.User; // Imports the User entity class
+import com.expense.tracker.Repositories.UserRepository; // Imports the UserRepository interface
+import org.springframework.beans.factory.annotation.Autowired; // Imports the Autowired annotation from Spring
+import org.springframework.security.crypto.password.PasswordEncoder; // Imports the PasswordEncoder interface from Spring Security
+import org.springframework.stereotype.Service; // Imports the Service annotation from Spring
 
-import java.util.Optional;
+import java.util.Optional; // Imports the Optional class from the Java standard library
 
-@Service
+@Service // Indicates that this class is a Spring service component
 public class UserService {
 
-    @Autowired
+    @Autowired // Marks this field to be autowired by Spring's dependency injection
     private UserRepository userRepository;
 
-    @Autowired
+    @Autowired // Marks this field to be autowired by Spring's dependency injection
     private PasswordEncoder passwordEncoder;
 
+    // Method to register a new user
     public User registerUser(User user) {
+        // Encodes the user's password before saving
         user.setPassword(passwordEncoder.encode(user.getPassword()));
+        // Saves the user entity to the database and returns the saved entity
         return userRepository.save(user);
     }
 
+    // Method to find a user by their username
     public Optional<User> findByUsername(String username) {
+        // Retrieves a user entity by username from the database
         return userRepository.findByUsername(username);
     }
 }

@@ -24,15 +24,19 @@ public class User {
     // Represents the user's password column in the database
     private String password;
 
+    // Represents the user's username column in the database
+    private String username;
+
     // Default constructor required by JPA
     public User() {}
 
     // Parameterized constructor to create a User object with all fields
-    public User(Long id, String name, String email) {
+    public User(Long id, String name, String email, String password, String username) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.password = password;
+        this.username = username;
     }
 
     // Getter method to retrieve the user's email
@@ -63,5 +67,15 @@ public class User {
     // Setter method to update the user's password
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    // Getter method to retrieve the user's username
+    public String getUsername() {
+        return username;
+    }
+
+    // Setter method to update the user's username
+    public void setUsername(String username) {
+        this.username = username;
     }
 }
