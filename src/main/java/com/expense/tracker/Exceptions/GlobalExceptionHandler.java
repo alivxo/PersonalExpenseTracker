@@ -13,7 +13,7 @@ public class GlobalExceptionHandler {
 
   @ExceptionHandler(Exception.class)
   public ResponseEntity<Object> handleGlobalException(Exception ex) {
-    return ResponseHandler.generateResponse(HttpStatus.BAD_REQUEST,
+    return ResponseHandler.generateResponse(HttpStatus.INTERNAL_SERVER_ERROR,
         "Oops !!! This supposed not to happen! please contact the support team.", ex.getMessage());
   }
 
