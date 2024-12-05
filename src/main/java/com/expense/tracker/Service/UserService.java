@@ -14,6 +14,9 @@ public class UserService {
     @Autowired // Marks this field to be autowired by Spring's dependency injection
     private UserRepository userRepository;
 
+    @Autowired
+    UserEmailService userEmailService;
+
     @Autowired // Marks this field to be autowired by Spring's dependency injection
     private PasswordEncoder passwordEncoder;
 
@@ -21,8 +24,10 @@ public class UserService {
     public User registerUser(User user) {
         // Encodes the user's password before saving
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        // Saves the user entity to the database and returns the saved entity
-        return userRepository.save(user);
+        User registeredUser = userRepository.save(user);
+        userEmailService.sendRegistrationEmail(registeredUser);
+
+        return registeredUser;
     }
 
     // Method to find a user by their username

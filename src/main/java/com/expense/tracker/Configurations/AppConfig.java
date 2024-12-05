@@ -18,9 +18,9 @@ public class AppConfig {
     }
 
     @Autowired // Marks the constructor to be autowired by Spring's dependency injection facilities.
-    public AppConfig(@Value("${datasource.url}") String url, // Injects the value of the 'datasource.url' property from the application properties file.
-                     @Value("${datasource.username}") String username, // Injects the value of the 'datasource.username' property from the application properties file.
-                     @Value("${datasource.password}") String password) // Injects the value of the 'datasource.password' property from the application properties file.
+    public AppConfig(@Value("${spring.datasource.url}") String url, // Injects the value of the 'spring.datasource.url' property from the application properties file.
+                     @Value("${spring.datasource.username}") String username, // Injects the value of the 'spring.datasource.username' property from the application properties file.
+                     @Value("${spring.datasource.password}") String password) // Injects the value of the 'datasource.password' property from the application properties file.
     {
         basicDataSource = new BasicDataSource(); // Creates a new instance of BasicDataSource.
         basicDataSource.setUrl(url); // Sets the URL for the data source.

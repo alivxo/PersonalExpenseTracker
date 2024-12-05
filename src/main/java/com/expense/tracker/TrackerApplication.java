@@ -1,13 +1,11 @@
 package com.expense.tracker;
 
-import com.expense.tracker.Models.User;
-import com.expense.tracker.Repositories.UserRepository;
-import org.apache.camel.language.bean.Bean;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.scheduling.annotation.EnableAsync;
 
 @SpringBootApplication
+@EnableAsync
 public class TrackerApplication {
 
   public static void main(String[] args) {
