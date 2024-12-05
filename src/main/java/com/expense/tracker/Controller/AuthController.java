@@ -48,7 +48,7 @@ public class AuthController {
 
         String token = jwtUtil.generateToken(user.getUsername());
 
-        return ResponseHandler.generateResponse(HttpStatus.OK, "Successfully logged!!!", token);
+        return ResponseHandler.generateResponse(HttpStatus.OK, "Successfully logged in !!!", token);
     }
 
     @GetMapping("/validate")
