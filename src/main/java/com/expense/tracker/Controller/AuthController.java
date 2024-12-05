@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -32,13 +33,16 @@ public class AuthController {
 
     @PostMapping("/register")
     public ResponseEntity<Object> register(@RequestBody User user) {
-        userService.registerUser(user);
+        User savedUser = userService.registerUser(user);
+        System.out.println("Encoded Password: " + savedUser.getPassword());
 
         return ResponseHandler.generateResponse(HttpStatus.OK, "User Registered Successfully", user);
     }
 
     @PostMapping("/login")
     public ResponseEntity<Object> login(@RequestBody User user) {
+        System.out.println("Login attempt for username: " + user.getUsername());
+
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword()));
 
